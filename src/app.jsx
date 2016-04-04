@@ -61,7 +61,7 @@ export class App extends React.Component {
 		            <ActionBarRow>
 		              <HitsStats/>
 									<SortingSelector options={[
-										{label:"Relevance", field:"_score", order:"desc"},
+										{label:"Relevance", field:"_score", order:"desc", defaultOption:true},
 										{label:"Latest Releases", field:"released", order:"desc"},
 										{label:"Earliest Releases", field:"released", order:"asc"}
 									]}/>
