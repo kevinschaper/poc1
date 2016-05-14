@@ -30,7 +30,7 @@ const MovieHitsGridItem = (props)=> {
   )
 }
 
-export class App extends React.Component {
+export class SearchPage extends React.Component {
 	render(){
 		return (
 			<SearchkitProvider searchkit={searchkit}>
