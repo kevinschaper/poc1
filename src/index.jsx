@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {SearchPage} from "./SearchPage";
 import {App} from "./AppPage";
-import { Router, Link, Route, browserHistory, IndexRoute } from 'react-router'
+import { Router, Link, Route, hashHistory, IndexRoute } from 'react-router'
 
 const Home = () => {
   return (
@@ -13,7 +13,7 @@ const Home = () => {
 }
 
 ReactDOM.render((
-<Router history={browserHistory}>
+<Router history={hashHistory}>
   <Route path="/" component={App}>
     <IndexRoute component={Home}/>
     <Route path="search" component={SearchPage}/>
