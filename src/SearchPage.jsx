@@ -48,7 +48,6 @@ export class SearchPage extends React.Component {
 	render(){
 		return (
 			<div>
-				<h1>AGR :)</h1>
 				<SearchkitProvider searchkit={searchkit}>
 			    <Layout>
 			      <TopBar>
