@@ -43,14 +43,6 @@ export class SearchPage extends React.Component {
 		return (
 			<div>
 			    <Layout>
-			      <TopBar>
-			        <SearchBox
-						autofocus={true}
-						searchOnChange={true}
-						placeholder="Search genes..."
-						prefixQueryFields={["gene_name", "description", "secondary_id", "organism", "gene_symbol^10"]}
-					/>
-			      </TopBar>
 			      <LayoutBody>
 			        <SideBar>
 						<MenuFilter
