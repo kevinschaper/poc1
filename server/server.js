@@ -48,7 +48,7 @@ module.exports = {
 
 
     } else {
-      app.use("/static", express.static(__dirname + '/dist'));
+      app.use("/poc1/static", express.static(__dirname + '/dist'));
     }
 
     var searchkitRouter = SearchkitExpress.createRouter({
