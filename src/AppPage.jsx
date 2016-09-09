@@ -34,15 +34,20 @@ export class App extends React.Component {
                                 </button>
                             </div>
                             <div id="navbar" className="navbar-collapse collapse">
-                                <SearchBox
-                                    autofocus={true}
-                                    searchOnChange={true}
-                                    placeholder="Search genes..."
-                                    prefixQueryFields={["gene_name", "description", "secondary_id", "organism", "gene_symbol^10"]}
-                                />
+
                                 <ul className="nav navbar-nav navbar-right">
                                     <li><a href="#"><span className="glyphicon glyphicon-info-sign"></span> About</a></li>
                                     <li><a href="#"><span className="glyphicon glyphicon-question-sign"></span> Help</a></li>
+                                    <li>
+                                        <div className='search-container'>
+                                            <SearchBox
+                                                autofocus={true}
+                                                searchOnChange={true}
+                                                placeholder="Search genes..."
+                                                prefixQueryFields={["gene_name", "description", "secondary_id", "organism", "gene_symbol^10"]}
+                                            />
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
