@@ -4,6 +4,7 @@ var bodyParser = require("body-parser")
 var methodOverride = require("method-override")
 var compression = require("compression")
 var _ = require("lodash")
+var SearchkitExpress = require('searchkit-express');
 
 module.exports = {
   start: function(prodMode) {
@@ -49,6 +50,15 @@ module.exports = {
     } else {
       app.use("/static", express.static(__dirname + '/dist'));
     }
+
+    var searchkitRouter = SearchkitExpress.createRouter({
+      host: process.env.ELASTIC_URL || "http://localhost:9200",  
+      index: 'agr_searchable_items',
+      queryProcessor: function(query, req, res){
+        return query;
+      }
+    });
+    app.use("/api", searchkitRouter);
 
     app.get('*', function(req, res) {
       res.render('index');
