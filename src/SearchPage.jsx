@@ -19,25 +19,20 @@ const GeneItem = (props)=> {
 	let data = props.result._source;
   const {bemBlocks, result} = props
   const source:any = _.extend({}, result._source, result.highlight)
+  console.log(result.highlight)
         //   <img data-qa="poster" className={bemBlocks.item("poster")} src={result._source.poster} width="170" height="240"/>
         // <div data-qa="title" className={bemBlocks.item("title")} dangerouslySetInnerHTML={{__html:source.title}}>
 
   return (
     <div data-qa="hit">
-      <p><a href={data.href} target="_blank">{data.name}</a></p>
-      <p>{data.description}</p>
+		<a target='_new' href={source.href} dangerouslySetInnerHTML={{__html:source.gene_symbol}}/>
+		<p dangerouslySetInnerHTML={{__html:source.gene_name}}/>
     </div>
   )
 }
 
 
 
-			          // <RefinementListFilter
-			          //   id="actors"
-			          //   title="Actors"
-			          //   field="actors.raw"
-			          //   operator="AND"
-			          //   size={10}/>
 
 export class SearchPage extends React.Component {
 	render(){
@@ -50,17 +45,25 @@ export class SearchPage extends React.Component {
 			        <SearchBox
 			          autofocus={true}
 			          searchOnChange={true}
-								placeholder="Search movies..."
-			          prefixQueryFields={["actors^1","type^2","languages","title^10"]}/>
+					placeholder="Search movies..."
+			          prefixQueryFields={["gene_name", "description", "secondary_id", "gene_symbol^10"]}/>
 			      </TopBar>
 			      <LayoutBody>
 			        <SideBar>
 						<MenuFilter
 							id="type"
-							title="Feature Type"
-							field="feature_type.raw"
+							title="Gene Type"
+							field="gene_type.raw"
 							listComponent={ItemHistogramList}
 						/>
+						<RefinementListFilter
+				            id="mol_func"
+				            title="Organism"
+				            field="organism.raw"
+				            operator="AND"
+				            size={10}
+			            />
+
 			        </SideBar>
 			        <LayoutResults>
 			          <ActionBar>
@@ -77,10 +80,10 @@ export class SearchPage extends React.Component {
 			              <ResetFilters/>
 			            </ActionBarRow>
 			          </ActionBar>
-			          <Hits mod="sk-hits-grid" hitsPerPage={10} itemComponent={GeneItem}
+			          <Hits mod="sk-hits-list" hitsPerPage={10} itemComponent={GeneItem} highlightFields={["gene_name", "description", "secondary_id"]}
 			            />
 			          <NoHits/>
-								<Pagination showNumbers={true}/>
+						<Pagination showNumbers={true}/>
 			        </LayoutResults>
 			      </LayoutBody>
 			    </Layout>

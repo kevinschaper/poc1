@@ -53,7 +53,7 @@ module.exports = {
 
     var searchkitRouter = SearchkitExpress.createRouter({
       host: process.env.ELASTIC_URL || "http://localhost:9200",  
-      index: 'agr_searchable_items',
+      index: 'searchable_items',
       queryProcessor: function(query, req, res){
         return query;
       }
