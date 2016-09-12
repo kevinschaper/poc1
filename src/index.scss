@@ -1,3 +1,41 @@
+body {
+	background: #f4f4f4;
+}
+
+.agr-logo {
+	width: 255px;
+	margin-left: 10px;
+}
+
+.navbar {
+	border-radius: 0;
+	margin-bottom: 0;
+}
+
 .sk-top-bar {
-	position: absolute;
+	position: relative;
+}
+
+.sk-search-box {
+	margin-top: 7px;
+}
+
+.sk-search-box__text {
+	padding: 7px 20px;
+}
+
+.sk-layout__body {
+	margin-top: 0;
+}
+
+.sk-search-box {
+	background: white;
+}
+
+.sk-search-box__text {
+	color: black;
+}
+
+.sk-search-box__loader {
+	display: none;
 }

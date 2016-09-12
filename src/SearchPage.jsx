@@ -2,7 +2,6 @@ import * as React from "react";
 import * as _ from "lodash";
 
 import {
-	SearchkitManager, SearchkitProvider,
 	SearchBox, RefinementListFilter, MenuFilter,
 	Hits, HitsStats, NoHits, Pagination, SortingSelector,
 	SelectedFilters, ResetFilters, ItemHistogramList,
@@ -10,35 +9,30 @@ import {
 	SideBar, ActionBar, ActionBarRow
 } from "searchkit";
 
-require("./index.scss");
-
-const host = "/api"
-const searchkit = new SearchkitManager(host)
-
 const GeneItem = (props)=> {
 	let data = props.result._source;
-  const {bemBlocks, result} = props
-  const source:any = _.extend({}, result._source, result.highlight)
-        //   <img data-qa="poster" className={bemBlocks.item("poster")} src={result._source.poster} width="170" height="240"/>
-        // <div data-qa="title" className={bemBlocks.item("title")} dangerouslySetInnerHTML={{__html:source.title}}>
+	const {bemBlocks, result} = props
+	const source:any = _.extend({}, result._source, result.highlight)
+	//   <img data-qa="poster" className={bemBlocks.item("poster")} src={result._source.poster} width="170" height="240"/>
+	// <div data-qa="title" className={bemBlocks.item("title")} dangerouslySetInnerHTML={{__html:source.title}}>
 
-  return (
-    <div data-qa="hit">
-		<a target='_new' href={source.href} dangerouslySetInnerHTML={{__html:source.gene_symbol}} />
-		<dl>
-			<dt>Organism</dt>
-			<dd dangerouslySetInnerHTML={{__html:source.organism}}></dd>
-		</dl>
-		<dl>
-			<dt>Gene Name</dt>
-			<dd dangerouslySetInnerHTML={{__html:source.gene_name}}></dd>
-		</dl>
-		<dl>
-			<dt>Description</dt>
-			<dd dangerouslySetInnerHTML={{__html:source.description}}></dd>
-		</dl>
-    </div>
-  );
+	return (
+	    <div data-qa="hit">
+			<h4><a target='_new' href={source.href} dangerouslySetInnerHTML={{__html:source.gene_symbol}} /></h4>
+			<dl>
+				<dt>Organism</dt>
+				<dd dangerouslySetInnerHTML={{__html:source.organism}}></dd>
+			</dl>
+			<dl>
+				<dt>Gene Name</dt>
+				<dd dangerouslySetInnerHTML={{__html:source.gene_name}}></dd>
+			</dl>
+			<dl>
+				<dt>Description</dt>
+				<dd dangerouslySetInnerHTML={{__html:source.description}}></dd>
+			</dl>
+	    </div>
+	);
 }
 
 
@@ -48,16 +42,7 @@ export class SearchPage extends React.Component {
 	render(){
 		return (
 			<div>
-				<SearchkitProvider searchkit={searchkit}>
 			    <Layout>
-			      <TopBar>
-			        <SearchBox
-						autofocus={true}
-						searchOnChange={true}
-						placeholder="Search genes..."
-						prefixQueryFields={["gene_name", "description", "secondary_id", "organism", "gene_symbol^10"]}
-					/>
-			      </TopBar>
 			      <LayoutBody>
 			        <SideBar>
 						<MenuFilter
@@ -70,7 +55,7 @@ export class SearchPage extends React.Component {
 				            id="mol_func"
 				            title="Organism"
 				            field="organism.raw"
-				            operator="AND"
+				            operator="OR"
 				            size={10}
 			            />
 
@@ -92,7 +77,6 @@ export class SearchPage extends React.Component {
 			        </LayoutResults>
 			      </LayoutBody>
 			    </Layout>
-			  </SearchkitProvider>
 			</div>
 		)
 	}
