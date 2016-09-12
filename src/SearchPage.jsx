@@ -18,7 +18,7 @@ const GeneItem = (props)=> {
 
 	return (
 	    <div data-qa="hit">
-			<a target='_new' href={source.href} dangerouslySetInnerHTML={{__html:source.gene_symbol}} />
+			<h4><a target='_new' href={source.href} dangerouslySetInnerHTML={{__html:source.gene_symbol}} /></h4>
 			<dl>
 				<dt>Organism</dt>
 				<dd dangerouslySetInnerHTML={{__html:source.organism}}></dd>
