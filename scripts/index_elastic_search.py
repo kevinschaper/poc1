@@ -105,6 +105,14 @@ mods = {
             'primary_id': 0,
             'description': 5
         }
+    },
+    'Danio rerio': {
+        'mine_dump_file': 'data/zebrafishmine_gene_results.tsv',
+        'schema': {
+            'gene_symbol': 1,
+            'gene_name': 2,
+            'primary_id': 0
+        }
     }
 }
 
